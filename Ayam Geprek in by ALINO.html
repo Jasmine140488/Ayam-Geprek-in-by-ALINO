@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayam Geprek'in "by ALINO" | Ayam Geprek Terenak di Depok</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #ff9800;
+            --primary-dark: #e68900;
+            --secondary: #d32f2f;
+            --light: #fff9e6;
+            --dark: #333333;
+            --gray: #666666;
+            --light-gray: #f5f5f5;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        .logo-text span:first-child {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Menu Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .menu-category {
+            margin-bottom: 60px;
+        }
+        
+        .menu-category h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            border-bottom: 2px dashed var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .menu-item-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .menu-item-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .menu-highlight {
+            border: 3px solid var(--primary);
+        }
+        
+        .menu-highlight .menu-item-name {
+            color: var(--primary-dark);
+        }
+        
+        /* Contact & Location */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .contact-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .footer-about {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-contact {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .designer-credit {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                background-color: white;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <div class="logo-text">
+                        <span>Ayam Geprek'in</span>
+                        <span>"by ALINO"</span>
+                    </div>
+                </div>
+                
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#contact">Kontak & Lokasi</a></li>
+                    <li><a href="tel:085774254515" class="cta-button">Pesan Sekarang</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Ayam Geprek'in "by ALINO"</h1>
+            <p>Nikmati kelezatan ayam geprek dengan bumbu spesial khas ALINO yang menggugah selera. Dijamin nagih!</p>
+            <a href="#menu" class="cta-button">Lihat Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Menu Andalan Kami</h2>
+            </div>
+            
+            <!-- Menu Hemat -->
+            <div class="menu-category">
+                <h3>Menu Hemat</h3>
+                <div class="menu-grid">
+                    <div class="menu-item menu-highlight">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">GEPREK'IN</div>
+                                <div class="menu-item-price">Rp 17K</div>
+                            </div>
+                            <div class="menu-item-desc">Nasi + Ayam Geprek dengan sambal spesial</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">GEPREK'IN MIE</div>
+                                <div class="menu-item-price">Rp 18K</div>
+                            </div>
+                            <div class="menu-item-desc">Mie + Ayam Geprek dengan sambal spesial</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">GEPREK'IN + TEA</div>
+                                <div class="menu-item-price">Rp 19K</div>
+                            </div>
+                            <div class="menu-item-desc">Nasi + Ayam Geprek + Teh (Es/Panas)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">GEPREK'IN MIE + TEA</div>
+                                <div class="menu-item-price">Rp 20K</div>
+                            </div>
+                            <div class="menu-item-desc">Mie + Ayam Geprek + Teh (Es/Panas)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Drink -->
+            <div class="menu-category">
+                <h3>Minuman</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">TEA (ICE/HOT)</div>
+                                <div class="menu-item-price">Rp 5K</div>
+                            </div>
+                            <div class="menu-item-desc">Teh manis pilihan, tersedia dingin atau panas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">AIR MINERAL</div>
+                                <div class="menu-item-price">Rp 5K</div>
+                            </div>
+                            <div class="menu-item-desc">Air mineral kemasan berkualitas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ala Carte -->
+            <div class="menu-category">
+                <h3>Ala Carte</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">Ayam Geprek</div>
+                                <div class="menu-item-price">Rp 13K</div>
+                            </div>
+                            <div class="menu-item-desc">Ayam geprek dengan sambal spesial ALINO</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">Mie Goreng</div>
+                                <div class="menu-item-price">Rp 6K</div>
+                            </div>
+                            <div class="menu-item-desc">Mie goreng spesial dengan bumbu rahasia</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">Nasi</div>
+                                <div class="menu-item-price">Rp 5K</div>
+                            </div>
+                            <div class="menu-item-desc">Nasi putih pulen panas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">Telur</div>
+                                <div class="menu-item-price">Rp 4K</div>
+                            </div>
+                            <div class="menu-item-desc">Telur goreng atau rebus</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <div class="menu-item-name">Tahu/Tempe/Nugget</div>
+                                <div class="menu-item-price">Rp 1.5K</div>
+                            </div>
+                            <div class="menu-item-desc">Pilihan lauk pendamping yang lezat</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kontak & Lokasi</h2>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jl. Merdeka Raya, Abadijaya, Kec. Sukmajaya, Kota Depok, Jawa Barat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p><a href="tel:085774254515">0857-7425-4515</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Jam Operasional</h4>
+                            <p>Setiap Hari: 10:00 - 22:00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <h4>Info Pesanan</h4>
+                            <p>Pesan langsung via telepon atau datang ke lokasi kami. Gratis ongkir untuk area sekitar dengan pemesanan minimal Rp 50.000.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="tel:085774254515" class="cta-button" style="margin-top: 20px; display: inline-block;">Hubungi Kami</a>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.317217600843!2d106.8364272749961!3d-6.353986262922001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec1f8d7e6c1d%3A0x4a6b6e9d3a3c3c3d!2sJl.%20Merdeka%20Raya%2C%20Abadijaya%2C%20Kec.%20Sukmajaya%2C%20Kota%20Depok%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1690782634565!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Ayam Geprek'in <span>"by ALINO"</span></div>
+                    <p>Ayam geprek dengan bumbu spesial khas ALINO yang telah menjadi favorit banyak pelanggan sejak 2020. Kami menggunakan bahan-bahan segar dan berkualitas untuk memberikan pengalaman makan terbaik.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Menu Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#menu">Menu Hemat</a></li>
+                        <li><a href="#menu">Minuman</a></li>
+                        <li><a href="#menu">Ala Carte</a></li>
+                        <li><a href="#contact">Kontak & Lokasi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Hubungi Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Merdeka Raya, Abadijaya, Depok</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:085774254515">0857-7425-4515</a></p>
+                    <p><i class="fas fa-clock"></i> Setiap Hari: 10:00 - 22:00 WIB</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Ayam Geprek'in "by ALINO". Hak Cipta Dilindungi.</p>
+                <p>Website designed by <span class="designer-credit">IJT.Project</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
